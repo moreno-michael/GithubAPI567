@@ -5,7 +5,7 @@ from unittest.mock import MagicMock, patch
 class github_test(unittest.TestCase):
     @patch('Github.requests')
     def test_valid_output(self, mock_requests):
-        mock_response = MagickMock()
+        mock_response = MagicMock()
         mock_response.status_code = 200
         mock_response.json.return_value = [
             {"name": "SSW567CircleCI", "commits": 9},
