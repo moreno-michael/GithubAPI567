@@ -15,7 +15,7 @@ class github_test(unittest.TestCase):
         self.assertEqual(Github.get_git_repos_and_commits("mikemoreedu"), [('SSW567CircleCI', 2), ('Triangle567', 2)])
 
     @patch('Github.requests')
-    def test_bad_input(self):
+    def test_bad_input(self, mock_requests):
         mock_response = MagicMock()
         mock_response.status_code = 404
         mock_response.json.return_value = {
