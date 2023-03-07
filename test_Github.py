@@ -10,6 +10,8 @@ class github_test(unittest.TestCase):
         mock_response.json.return_value = [
             {"name": "SSW567CircleCI", "commits": 9},
             {"name": "Triangle567", "commits": 5}
+        ]
+        mock_requests.get.return_value = mock_response
         self.assertEqual(Github.get_git_repos_and_commits("mikemoreedu"), [('SSW567CircleCI', 9), ('Triangle567', 5)])
 
     #def test_bad_input(self):
