@@ -25,8 +25,15 @@ class github_test(unittest.TestCase):
         mock_requests.get.return_value = mock_response
         self.assertEqual(Github.get_git_repos_and_commits(1), "User ID must be a string")
     
-    #def test_UserID(self):
-     #   self.assertEqual(Github.get_git_repos_and_commits("notmikemoreedu"), "Invalid UserID")
+    @patch('Github.requests')
+    def test_UserID(self, mock_requests):
+        mock_response = MagicMock()
+        mock_response.status_code = 404
+        mock_response.json.return_value = {
+            "Response": "Does not exist"
+        }
+        mock_requests.get.return_value = mock_response
+        self.assertEqual(Github.get_git_repos_and_commits("notmikemoreedu"), "Invalid User ID")
 if __name__ == '__main__':
     print('Performing unit tests...')
     unittest.main()
