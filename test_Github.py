@@ -33,7 +33,7 @@ class github_test(unittest.TestCase):
             "Response": "Does not exist"
         }
         mock_requests.get.return_value = mock_response
-        self.assertEqual(Github.get_git_repos_and_commits("notmikemoreedu"), "Invalid User ID")
+        self.assertEqual(Github.get_git_repos_and_commits("notmikemoreedu"), "Invalid UserID")
 if __name__ == '__main__':
     print('Performing unit tests...')
     unittest.main()
